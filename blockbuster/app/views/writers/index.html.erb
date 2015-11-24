@@ -1,0 +1,15 @@
+<h2>Writers</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Writer Name</th>
+        <th>Actions</th>
+
+    </tr>
+    <% @writers.each do |writer| %>
+        <tr>
+            <td> <%= writer.first_name %> <%= writer.last_name %></td>
+            <td><%= link_to 'Edit', edit_writer_path(writer.id) %> | <%= link_to 'Delete', writer_path(writer), method: :delete, data: {confirm: "Are you sure?" } %></td>
+            <td></td>
+        </tr>
+    <% end %>
+</table>

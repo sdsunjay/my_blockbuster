@@ -1,0 +1,15 @@
+<h2>Directors</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Director's Name</th>
+        <th>Actions</th>
+
+    </tr>
+    <% @directors.each do |director| %>
+        <tr>
+            <td> <%= director.first_name %> <%= director.last_name %></td>
+            <td><%= link_to 'Edit', edit_director_path(director.id) %> | <%= link_to 'Delete', director_path(director), method: :delete, data: {confirm: "Are you sure?" } %></td>
+            <td></td>
+        </tr>
+    <% end %>
+</table>
