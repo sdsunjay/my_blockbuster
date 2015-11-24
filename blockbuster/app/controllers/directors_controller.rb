@@ -36,7 +36,7 @@ class DirectorsController < ApplicationController
       @director = Director.find(params[:id])
 
     if  @director.destroy
-        flash[:notice] = "Director DRemoved"
+        flash[:notice] = "Director Removed"
         redirect_to directors_path
     else
         flash[:alert] = "Director Not Removed"
