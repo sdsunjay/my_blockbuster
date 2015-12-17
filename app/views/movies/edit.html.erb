@@ -1,0 +1,63 @@
+<!-- This is going to be a long file -->
+<h2>Edit Movie</h2>
+<%= form_for @movie do |f| %>
+
+    <div class="form-group">
+        <%= f.label :title %><br />
+        <%= f.text_field :title, class:'form-control' %><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :year %><br />
+        <%= f.select :year_id, Year.all.collect {|x| [x.year, x.id]}, {:include_blank => 'Select One'}, class:'form-control' %><br /><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :rating %><br />
+        <%= f.select :rating_id, Rating.all.collect {|x| [x.rating, x.id]}, {:include_blank => 'Select One'}, class:'form-control' %><br /><br />
+    </div>
+
+    <div class="form-group">
+        <%= f.label :coverpath %><br />
+        <%= f.text_field :coverpath, class:'form-control' %><br />
+    </div>
+
+    <div class="form-group">
+        <%= f.label :genre %><br />
+        <%= f.select :genre_id, Genre.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'}, class:'form-control' %><br /><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :director %><br />
+        <%= f.select :director_id, Director.all.collect {|x| [x.first_name, x.id]}, {:include_blank => 'Select One'}, class:'form-control' %><br /><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :producer %><br />
+        <%= f.select :producer_id, Producer.all.collect {|x| [x.first_name, x.id]}, {:include_blank => 'Select One'}, class:'form-control' %><br /><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :studio %><br />
+        <%= f.select :studio_id, Studio.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'}, class:'form-control' %><br /><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :writer %><br />
+        <%= f.select :writer_id, Writer.all.collect {|x| [x.first_name, x.id]}, {:include_blank => 'Select One'}, class:'form-control' %><br /><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :plot %><br />
+        <%= f.text_area :plot, class:'form-control' %><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :duration %><br />
+        <%= f.number_field :duration, class:'form-control' %><br />
+    </div>
+    <div class="form-group">
+        <%= f.label :release_date %><br />
+        <%= f.date_field :release_date, class:'form-control' %><br />
+    </div>
+    <!-- link to IMDB -->
+    <div class="form-group">
+        <%= f.label :link %><br />
+        <%= f.text_field :link, class:'form-control' %><br />
+    </div>
+    <%= f.submit "Submit", class:'btn btn-primary' %>
+    <%=link_to "Cancel", movies_path, class:'btn btn-default' %>
+
+<% end %>
