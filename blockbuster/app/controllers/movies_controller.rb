@@ -46,17 +46,26 @@ class MoviesController < ApplicationController
         render 'destroy'
     end
   end
+
   def index
-      @movies = Movie.all
       @genres = Genre.all
+      if params[:query].present?
+          @movies = Movie.search(params[:query], page: params[:page])
+      else
+          @movies = Movie.all
+      end
   end
 
-  def show
-      @movie = Movie.find(params[:id])
-      @genres = Genre.all
+  def autocomplete
+      render json: Movie.search(params[:query], autocomplete: true, limit: 10).map(&:title)
   end
-  private
-  def movie_params
-      params.require(:movie).permit(:title, :plot, :release_date, :runtime, :coverpath, :duration, :link, :genre_id, :director_id, :rating_id, :studio_id, :producer_id, :writer_id, :year_id, :star_rating_id)
+
+      def show
+          @movie = Movie.find(params[:id])
+          @genres = Genre.all
+      end
+      private
+      def movie_params
+          params.require(:movie).permit(:title, :plot, :release_date, :runtime, :coverpath, :duration, :link, :genre_id, :director_id, :rating_id, :studio_id, :producer_id, :writer_id, :year_id, :star_rating_id)
+      end
   end
-end
