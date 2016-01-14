@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-    has_many :genre
+    searchkick autocomplete: ['title']
     belongs_to :director
     belongs_to :producer
     belongs_to :writer
@@ -8,6 +8,8 @@ class Movie < ActiveRecord::Base
     belongs_to :rating
     belongs_to :studio
     has_many :actors
+    has_many :categorizations
+    has_many :genres, :through => :categorizations
 
     validates :title, presence:true
     validates :plot, presence:true
@@ -15,9 +17,10 @@ class Movie < ActiveRecord::Base
     validates :release_date, presence:true
     validates :director_id, presence:true
     validates :writer_id, presence:true
-    validates :genre_id, presence:true
+#validates :genre_id, presence:true
     validates :year_id, presence:true
     validates :rating_id, presence:true
+
 end
 class LinkValidator < ActiveModel::EachValidator
 

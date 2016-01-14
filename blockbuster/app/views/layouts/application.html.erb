@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><%= @page_title ? @page_title: 'Welcome' %>| BLOCKBUSTER VIDEO</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+     <%= csrf_meta_tags %>
   <!-- We defined this stuff -->
     <meta name="description" content="Located in /layouts/application.html/erb">
     <meta name="author" content="Sunjay Dhama">
@@ -64,6 +63,12 @@
                   <li><%= link_to 'Writers', writers_path %></li>
               </ul>
               </li>
+          <form class="search-form navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
       </div><!--/.nav-collapse -->
   </div>
   </nav>

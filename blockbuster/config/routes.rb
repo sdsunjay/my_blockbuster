@@ -156,7 +156,10 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-resources :movies
+#resources :movies
+resources :movies do
+    get :autocomplete
+end
 resources :genres
 resources :directors
 resources :producers
@@ -167,7 +170,6 @@ resources :ratings
 resources :actors
 
 # Example resource route with options:
-  #   resources :products do
   #     member do
   #       get 'short'
   #       post 'toggle'

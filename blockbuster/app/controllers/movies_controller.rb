@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.create(movie_params)
-  
+#movie.categorizations.create(movie_params)
     if @movie.save
         flash[:notice] = "Movie Created"
         redirect_to movies_path
@@ -60,12 +60,12 @@ class MoviesController < ApplicationController
       render json: Movie.search(params[:query], autocomplete: true, limit: 10).map(&:title)
   end
 
-      def show
-          @movie = Movie.find(params[:id])
-          @genres = Genre.all
-      end
+  def show
+      @movie = Movie.find(params[:id])
+      @genres = @movie.genres
+  end
       private
       def movie_params
-          params.require(:movie).permit(:title, :plot, :release_date, :runtime, :coverpath, :duration, :link, :genre_id, :director_id, :rating_id, :studio_id, :producer_id, :writer_id, :year_id, :star_rating_id)
+          params.require(:movie).permit(:title, :plot, :release_date, :runtime, :coverpath, :duration, :link, :genre_ids, :director_id, :rating_id, :studio_id, :producer_id, :writer_id, :year_id, :star_rating_id)
       end
   end
